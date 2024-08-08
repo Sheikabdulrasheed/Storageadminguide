@@ -1,0 +1,23 @@
+commands
+--------------
+1)cat /etc/hosts | grep -i ----> To Read 
+2)ssh -1 'ford\$srashee5' cluster name ---> To login to the cluster
+3)node show ---> To check no of nodes
+4)version  ----> To check the version of nodes
+5)sysconfig -v :---->To see the system configuration in details
+6)aggr show --->To see the aggregates present in cluster 
+7)rows 0 ---> To get a proper view
+8)aggr show -fields node --->To show the aggregate with field node
+9)aggr show -fields node,root --->To show the aggregate with field root
+10)node run -node <node name> ---> To get inside the node (Eg: node run -node "test"(nodename/number)
+11)vserver show -vserver "test" ---> To see the particular 
+12)cifs share show -vserver "test" ---> To see share in the volume
+13)vol show -vserver isg9010201 ---> To get the size of the volume
+14)fields ---> To see the particular 
+15)Run ---> cmd ---> nslookup --->To find out ip address
+16)Run ---> cmd ---> mstsc ---> To open windows server
+17)snapshot show -vserver "test" -volume "test_proj" -fields create-time xxxx ---> To see the create time of that snapsnots in that volume
+18)snapshot show -vserver "test" -volume "test"j ---> To get the snapshots 
+19)quota policy rule ---> To see quota policy
+20)quota policy rule modify -vserver test -policy-name default -volume test_proj -type tree -target 01_Common_Folder -qtree "" -disk-limit 19GB ---> To add a extra limit to the qtree
+21)node show -fields serialnumber ----> To see serial number
