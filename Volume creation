@@ -1,0 +1,38 @@
+
+=================
+Here the request is to  create a new volume by using the below details:
+
+Vserver :test
+Volume:test_v0003
+Qtree:q00003
+aggregate:testaggr
+Requested size: 8192GB
+
+
+=================
+
+test/test_v0003/q00003  8192GB 
+
+vol create -vserver test -volume test_v0003 -aggregate testaggr_ssd_aggr1 -size 2000GB  -state online -policy test_v0003 -security-style unix -junction-path /test_v0003 -type RW -snapshot-policy vmware -foreground true -percent-snapshot-space 0 -space-guarantee none -autosize-mode grow-shrink -autosize-grow-threshold-percent 90 -autosize-shrink-threshold-percent 50 -max-autosize 8192GB  
+
+vol efficiency on -vserver test -volume test_v0003
+
+vol efficiency modify -vserver test -volume test_v0003 -schedule auto@10
+
+qtree create -vserver test -volume test_v0003 -qtree q00003 -security-style unix -oplock-mode enable
+
+volume quota policy rule create -vserver test -policy-name test -volume test_v0003 -type tree -target q00003 -disk-limit 8192GB 
+
+vol quota on -vserver test -volume test_v0003
+
+export-policy create -vserver test -policyname test_v0003 
+
+export-policy create -vserver test -policyname test_v0003_q00003
+
+export-policy rule create -vserver test -policyname test_v0003 -ruleindex 1 -protocol any -clientmatch 0.0.0.0 -rorule any -rwrule none -anon 65534 -superuser sys -allow-suid true -allow-dev true
+
+export-policy rule create -vserver test -policyname test_v0003_q00003 -ruleindex 2 -protocol nfs -clientmatch 0.0.0.0 -rorule sys -rwrule sys -anon 65534 -superuser sys -allow-suid true -allow-dev true 
+
+
+=====================
+=====================
